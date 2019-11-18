@@ -48,7 +48,7 @@ extension NSView: Layoutable {
     }
 
     public func setRect(_ rect: CGRect, keepTransform: Bool) {
-        let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
+        let adjustedRect = backingAlignedRect(rect, options: [.alignRectFlipped, .alignAllEdgesNearest])
 
         if let superview = superview, !superview.isFlipped {
             var flippedRect = adjustedRect
